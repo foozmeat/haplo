@@ -1,0 +1,15 @@
+.down {
+    background-color: red;
+}
+
+.maint {
+    background-color: brown;
+}
+
+.up {
+    background-color: green;
+}
+
+.nocheck {
+    background-color: grey;
+}
