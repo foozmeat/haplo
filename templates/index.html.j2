@@ -13,6 +13,7 @@
         {% for backend in g.backends %}
             <tr>
                 <td class="backend {{ backend.status|lower|replace(' ', '') }}">{{ backend.name }}</td>
+                <td>&nbsp;</td>
                 <td>
                     {{ backend.scur }} / {{ backend.smax }} / {{ backend.slim }}
                 </td>
@@ -26,9 +27,9 @@
                 </td>
                 <td>
                     {% if server.status == 'UP' %}
-                        <a href="{{ url_for('disable_server', backend=backend.name,s_name=server.name) }}">DISABLE</a>
+                        <a href="{{ url_for('disable_server', backend=backend.name,s_name=server.name) }}" class="disable">DISABLE</a>
                     {% elif server.status == 'MAINT' %}
-                        <a href="{{ url_for('enable_server', backend=backend.name, s_name=server.name) }}">ENABLE</a>
+                        <a href="{{ url_for('enable_server', backend=backend.name, s_name=server.name) }}" class="enable">ENABLE</a>
                     {% endif %}
                 </td>
                 </tr>

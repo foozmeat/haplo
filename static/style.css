@@ -1,15 +1,90 @@
-.down {
-    background-color: red;
+* {
+	font-family: 'Share Tech Mono', monospace;
+	font-size: 13pt;
+	line-height: 18pt;
 }
 
-.maint {
-    background-color: brown;
+body {
+	padding: .5em;
+}
+
+/* Tables */
+
+table {
+	border-collapse: collapse;
+}
+
+tr {
+	border-bottom: 1px dashed rgba(0,0,0,.2);
+}
+tr:first-child {
+	border-top: 1px dashed rgba(0,0,0,.2);
+}
+
+td {
+	padding: 0 .25em;	
+}
+
+.server
+{
+	padding-left: .8em;
+}
+
+.down, .up, .maint, .nocheck 
+{
+
 }
 
 .up {
-    background-color: green;
+    background-color: #54ff4b;
+}
+
+.down {
+    background-color: #ff3526;
+    color: white;
+}
+
+.maint {
+    background-color: #ffc833;
 }
 
 .nocheck {
-    background-color: grey;
+    background-color: #bdc3c7;
 }
+
+a
+{
+	display: inline-block;
+	padding: 0 .5em;
+	text-decoration: none;
+	text-align: center;
+	min-width: 5em;
+}
+	a.enable
+	{
+		background: #54ff4b;	
+		color: black;
+	}
+	a.enable:before
+	{
+		content: '<';
+	}
+	a.enable:after
+	{
+		content: '>';
+	}
+	
+	a.disable
+	{
+		background: #ff3526;	
+		color: white;
+	}
+	a.disable:before
+	{
+		content: '>';
+	}
+	a.disable:after
+	{
+		content: '<';
+	}
+	

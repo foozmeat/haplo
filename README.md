@@ -49,4 +49,6 @@ server {
 }
 ```
 
+Design by [@mrgan](https://twitter.com/mrgan)
+
 ![](static/madewpc.gif)
