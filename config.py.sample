@@ -8,6 +8,8 @@ class Config(object):
     HAPROXY_SOCKET_DIR = None
     HAPROXY_SOCKET_FILE = None
 
+class ProductionConfig(Config):
+    pass
 
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
