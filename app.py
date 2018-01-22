@@ -49,11 +49,16 @@ def refresh_servers():
 
         servers = backend.servers()
         for server in servers:
-            b_d['servers'].append({'name': server.name,
-                                   'status': server.status,
-                                   'scur': server.metric('scur'),
-                                   'smax': server.metric('smax'),
-                                   })
+            s = {'name': server.name,
+                 'status': server.status,
+                 'scur': server.metric('scur'),
+                 'smax': server.metric('smax'),
+                 }
+
+            if 'UP' in s['status']:
+                s['status'] = 'UP'
+
+            b_d['servers'].append(s)
 
         backends.append(b_d)
 

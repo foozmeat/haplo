@@ -6,15 +6,16 @@
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style2.css') }}">
 </head>
 <body>
-    <h1>{{ title }}</h1>
-    <main>
-        {% for backend in g.backends %}
-        <table id="{{ backend.name|lower }}" class="{{ backend.status|lower|replace(' ', '') }} {% if backend.servers %}{% else %}noservers{% endif %}">
+<h1>{{ title }}</h1>
+<main>
+    {% for backend in g.backends %}
+        <table id="{{ backend.name|lower }}" class="{{ backend.status|lower|replace(' ', '') }}
+                {% if backend.servers %}{% else %}noservers{% endif %}">
 
             <caption>{{ backend.name }}</caption>
 
             {% if backend.servers %}
-            <thead>
+                <thead>
                 <tr>
                     <th scope="col" class="server">Server</th>
                     <th scope="col" class="cur">C</th>
@@ -22,50 +23,51 @@
                     <th scope="col" class="lim">M</th>
                     <th scope="col" class="action">Action</th>
                 </tr>
-            </thead>
+                </thead>
 
-            {% for server in backend.servers %}
-            <tbody>		
-                <tr class="{{ server.status|lower|replace(' ', '') }}">
-                    <th scope="row" class="server" {% if server.status == 'DOWN' %}colspan="5"{% endif %}>{{ server.name }}</th>
-                    {% if server.status != 'DOWN' %}
-                    <td class="cur">{{ server.scur }}</td>
-                    <td class="max">{{ server.smax }}</td>
-                    <td class="lim">{{ backend.slim }}</td>
-                    <td class="action">
-                        <button>
-                            {% if server.status == 'UP' %}
-                            <a href="{{ url_for('disable_server', backend=backend.name,s_name=server.name) }}">OFF</a>
-                            {% elif server.status == 'MAINT' %}
-                            <a href="{{ url_for('enable_server', backend=backend.name,s_name=server.name) }}">ON</a>
-                            {% else %}
-                            <span>NO</span>
-                            {% endif %}
-                        </button>
-                    </td>
-                    {% endif %}
-                </tr>
-            </tbody> 
-            {% endfor %}
+                {% for server in backend.servers %}
+                    <tbody>
+                    <tr class="{{ server.status|lower|replace(' ', '') }}">
+                        <th scope="row" class="server"
+                            {% if server.status == 'DOWN' %}colspan="5"{% endif %}>{{ server.name }}</th>
+                        {% if server.status != 'DOWN' %}
+                            <td class="cur">{{ server.scur }}</td>
+                            <td class="max">{{ server.smax }}</td>
+                            <td class="lim">{{ backend.slim }}</td>
+                            <td class="action">
+                                <button>
+                                    {% if server.status == 'UP' %}
+                                        <a href="{{ url_for('disable_server', backend=backend.name,s_name=server.name) }}">OFF</a>
+                                    {% elif server.status == 'MAINT' %}
+                                        <a href="{{ url_for('enable_server', backend=backend.name,s_name=server.name) }}">ON</a>
+                                    {% else %}
+                                        <span>NO</span>
+                                    {% endif %}
+                                </button>
+                            </td>
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                {% endfor %}
             {% else %}
-            <thead class="backend">
+                <thead class="backend">
                 <tr>
                     <th scope="col" class="cur">Current</th>
                     <th scope="col" class="max">Max</th>
                     <th scope="col" class="lim">Limit</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr>
                     <td class="cur">{{ backend.scur }}</td>
                     <td class="max">{{ backend.smax }}</td>
                     <td class="lim">{{ backend.slim }}</td>
                 </tr>
-            </tbody>
+                </tbody>
             {% endif %}
         </table>
-        {% endfor %}
-    </main
+    {% endfor %}
+</main
 </body>
 
 </html>
