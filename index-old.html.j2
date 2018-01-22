@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Haplo</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+<div class="center">
+    <table>
+
+        {% for backend in g.backends %}
+            <tr>
+                <td class="backend {{ backend.status|lower|replace(' ', '') }}">{{ backend.name }}</td>
+                <td>&nbsp;</td>
+                <td>
+                    {{ backend.scur }} / {{ backend.smax }} / {{ backend.slim }}
+                </td>
+            </tr>
+            {% for server in backend.servers %}
+                <tr>
+                    <td class="server">{{ server.name }}</td>
+                    <td class="{{ server.status|lower|replace(' ', '') }}">{{ server.status }}</td>
+                <td>
+                    {{ server.scur }} / {{ server.smax }}
+                </td>
+                <td>
+                    {% if server.status == 'UP' %}
+                        <a href="{{ url_for('disable_server', backend=backend.name,s_name=server.name) }}" class="disable">DISABLE</a>
+                    {% elif server.status == 'MAINT' %}
+                        <a href="{{ url_for('enable_server', backend=backend.name, s_name=server.name) }}" class="enable">ENABLE</a>
+                    {% endif %}
+                </td>
+                </tr>
+            {% endfor %}
+        {% endfor %}
+    </table>
+</div>
+</body>
+
+</html>

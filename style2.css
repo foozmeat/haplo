@@ -1,0 +1,335 @@
+@font-face
+{
+	font-family: 'Chrono';
+	src:
+		url('//panic.com/fonts/ChronoWeb_EOT/ChronoWebThinItalic.eot?#iefix') format('embedded-opentype'),
+		url('//panic.com/fonts/ChronoWeb_WOFF/ChronoWebThinItalic.woff') format('woff');
+	font-weight: 100;
+	font-style: italic;
+}
+
+@font-face
+{
+	font-family: 'Chrono';
+	src:
+		url('//panic.com/fonts/ChronoWeb_EOT/ChronoWebBoldItalic.eot?#iefix') format('embedded-opentype'),
+		url('//panic.com/fonts/ChronoWeb_WOFF/ChronoWebBoldItalic.woff') format('woff');
+	font-weight: 600;
+	font-style: italic;
+} 
+
+@font-face
+{
+	font-family: 'Chrono';
+	src:
+		url('//panic.com/fonts/ChronoWeb_EOT/ChronoWebBold.eot?#iefix') format('embedded-opentype'),
+		url('//panic.com/fonts/ChronoWeb_WOFF/ChronoWebBold.woff') format('woff');
+	font-weight: 800;
+	font-style: normal;
+}
+
+:root
+{
+    --white:#ebdbb2;
+    --pink:#d3869b;
+    --red:#d65d0e;
+    --orange:#fe8019;
+    --yellow: #fabd2f;
+    --dkgreen:#b8bb26;
+    --green:#8ec07c;
+    --teal:#83a598;
+    --gray:#3c3836;
+    --dkgray:#333333;
+    --black:#1d2021;
+}
+
+html
+{
+    font-size: 10px;
+}
+
+body
+{
+    font-family: "Chrono", -apple-system, sans-serif;
+    background-color: var(--gray);
+    
+    color: var(--white);
+    font-size: 1.3rem;
+    text-align: center;
+    margin: 0 auto;
+}
+
+h1:before
+{
+    content: "";
+    display: block;
+    background: transparent url("//signserver.panic.com/get/darksvg");
+    background-size: 6rem;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    width: 6rem;
+    height: 6rem;
+    margin: 2rem auto;
+    border-radius: 6rem;
+    border: 0.75rem solid var(--white);
+    padding: 1.26rem;
+}
+
+h1
+{
+    text-align: center;
+    font-size: 3.6rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-style: italic;
+    
+}
+
+a
+{
+    color: inherit;
+}
+
+main
+{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+table 
+{
+	text-align: center;
+	border-collapse: collapse;
+	flex: 0 1 auto;
+	table-layout: fixed;
+	margin: 2vh 1vw;
+	cell-spacing: 1rem;
+	order: 5;
+}
+
+table.up
+{
+	border-color: var(--green);
+}
+
+table.maint
+{
+	border-color: var(--yellow);
+    order: 2;
+}
+
+table.down
+{
+	border-color: var(--red);
+    order: 1;
+}
+
+table.nocheck
+{
+	border-color: var(--white);
+}
+
+table.noservers
+{
+    display: none;
+}
+
+
+caption
+{
+    font-size: 3rem;
+    font-weight: 100;
+    text-align: left;
+	color:var(--white);
+	font-style: normal;
+}
+
+thead
+{
+    display: none;
+}
+
+table.noservers thead
+{
+    display: table-row;
+}
+
+th
+{
+    background:var(--white);
+    color:var(--black);
+	padding: 1rem 0;
+}
+
+thead th
+{
+    width: 12rem !important;
+}
+
+th.server
+{
+    width: 26rem;
+    border-radius: 1.2rem;
+    text-transform: uppercase;
+    color: var(--white);
+    font-size: 2rem;
+    font-weight: 800;
+    border-radius: 1.2rem 0 0 1.2rem;
+    margin: 1rem 0;
+}
+
+tbody:before
+{
+    display: table-cell;
+    content: '';
+    column-span: all;
+    height: 1rem;
+}
+
+.action
+{
+    width: 8rem;
+}
+
+.cur,
+.max,
+.lim
+{
+    width: 2em;
+    font-weight: 600;
+    background:var(--white);
+    color:var(--black);
+}
+
+.cur
+{
+    color:var(--green);
+}
+
+.max
+{
+    color:var(--red);
+}
+
+.lim
+{
+    width: 3em;
+    color: var(--gray);
+}
+    
+
+tr.up th[scope="row"].server
+{ 
+    background:var(--green);
+}
+
+tr.maint th[scope="row"].server
+{ 
+    background:var(--yellow);
+    color:var(--red);
+}
+
+table caption:before
+{
+    display: inline-block;
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 0.5em;
+    content: "";
+    position: relative;
+    bottom: 0.12em;
+    margin-right: 0.25em;
+}
+
+table.up caption:before
+{
+    background:var(--green);   
+}
+
+table.maint caption:before
+{
+    background:var(--yellow);   
+}
+
+table.down caption:before
+{
+    background:var(--red);   
+}
+
+tr.nocheck caption:before
+{
+    background:var(--white);   
+}
+
+tr.down th[scope="row"].server
+{ 
+    background:var(--red);
+    border-radius: 1.2rem;
+}
+
+tr.nocheck th[scope="row"].server
+{ 
+    background:var(--pink);
+}
+
+button
+{
+    font-weight: 600;
+    border-width: 0.05rem;
+    border-color:var(--gray);
+    border-radius: 0.25em;
+    background:var(--white);
+	cursor: pointer;
+}
+
+button a
+{
+	text-decoration: none;
+	color: inherit;
+}
+
+tr.up button
+{ 
+    color:var(--red);
+}
+
+tr.maint button
+{ 
+    color:var(--gray);
+}
+
+tr.nocheck button,
+tr.down button
+{
+    opacity: 0.15;
+    cursor: not-allowed;
+}
+
+td.action
+{
+	position: relative;
+	height: 2rem;
+	background:var(--black);
+	border-radius: 0 1.2rem 1.2rem 0;
+}
+
+
+tr.up .action
+{
+	background:var(--red);
+}
+
+tr.maint .action
+{
+	background:var(--green);
+}
+
+tr.nocheck .action
+{
+	background:var(--teal);
+}
