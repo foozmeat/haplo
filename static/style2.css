@@ -16,7 +16,7 @@
 		url('//panic.com/fonts/ChronoWeb_WOFF/ChronoWebBoldItalic.woff') format('woff');
 	font-weight: 600;
 	font-style: italic;
-} 
+}
 
 @font-face
 {
@@ -52,27 +52,11 @@ body
 {
     font-family: "Chrono", -apple-system, sans-serif;
     background-color: var(--gray);
-    
+
     color: var(--white);
     font-size: 1.3rem;
     text-align: center;
     margin: 0 auto;
-}
-
-h1:before
-{
-    content: "";
-    display: block;
-    background: transparent url("//signserver.panic.com/get/darksvg");
-    background-size: 6rem;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    width: 6rem;
-    height: 6rem;
-    margin: 2rem auto;
-    border-radius: 6rem;
-    border: 0.75rem solid var(--white);
-    padding: 1.26rem;
 }
 
 h1
@@ -82,7 +66,7 @@ h1
     text-transform: uppercase;
     font-weight: 600;
     font-style: italic;
-    
+
 }
 
 a
@@ -101,7 +85,7 @@ main
     justify-content: center;
 }
 
-table 
+table
 {
 	text-align: center;
 	border-collapse: collapse;
@@ -221,15 +205,15 @@ tbody:before
     width: 3em;
     color: var(--gray);
 }
-    
+
 
 tr.up th[scope="row"].server
-{ 
+{
     background:var(--green);
 }
 
 tr.maint th[scope="row"].server
-{ 
+{
     background:var(--yellow);
     color:var(--red);
 }
@@ -248,32 +232,32 @@ table caption:before
 
 table.up caption:before
 {
-    background:var(--green);   
+    background:var(--green);
 }
 
 table.maint caption:before
 {
-    background:var(--yellow);   
+    background:var(--yellow);
 }
 
 table.down caption:before
 {
-    background:var(--red);   
+    background:var(--red);
 }
 
 tr.nocheck caption:before
 {
-    background:var(--white);   
+    background:var(--white);
 }
 
 tr.down th[scope="row"].server
-{ 
+{
     background:var(--red);
     border-radius: 1.2rem;
 }
 
 tr.nocheck th[scope="row"].server
-{ 
+{
     background:var(--pink);
 }
 
@@ -294,12 +278,12 @@ button a
 }
 
 tr.up button
-{ 
+{
     color:var(--red);
 }
 
 tr.maint button
-{ 
+{
     color:var(--gray);
 }
 
