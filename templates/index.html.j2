@@ -3,40 +3,69 @@
 <head>
     <meta charset="utf-8">
     <title>Haplo</title>
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
-
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style2.css') }}">
 </head>
 <body>
-<div class="center">
-    <table>
-
+    <h1>HAPLO</h1>
+    <main>
         {% for backend in g.backends %}
-            <tr>
-                <td class="backend {{ backend.status|lower|replace(' ', '') }}">{{ backend.name }}</td>
-                <td>&nbsp;</td>
-                <td>
-                    {{ backend.scur }} / {{ backend.smax }} / {{ backend.slim }}
-                </td>
-            </tr>
-            {% for server in backend.servers %}
+        <table id="{{ backend.name|lower }}" class="{{ backend.status|lower|replace(' ', '') }} {% if backend.servers %}{% else %}noservers{% endif %}">
+
+            <caption>{{ backend.name }}</caption>
+
+            {% if backend.servers %}
+            <thead>
                 <tr>
-                    <td class="server">{{ server.name }}</td>
-                    <td class="{{ server.status|lower|replace(' ', '') }}">{{ server.status }}</td>
-                <td>
-                    {{ server.scur }} / {{ server.smax }}
-                </td>
-                <td>
-                    {% if server.status == 'UP' %}
-                        <a href="{{ url_for('disable_server', backend=backend.name,s_name=server.name) }}" class="disable">DISABLE</a>
-                    {% elif server.status == 'MAINT' %}
-                        <a href="{{ url_for('enable_server', backend=backend.name, s_name=server.name) }}" class="enable">ENABLE</a>
-                    {% endif %}
-                </td>
+                    <th scope="col" class="server">Server</th>
+                    <th scope="col" class="cur">C</th>
+                    <th scope="col" class="max">M</th>
+                    <th scope="col" class="lim">M</th>
+                    <th scope="col" class="action">Action</th>
                 </tr>
+            </thead>
+
+            {% for server in backend.servers %}
+            <tbody>		
+                <tr class="{{ server.status|lower|replace(' ', '') }}">
+                    <th scope="row" class="server" {% if server.status == 'DOWN' %}colspan="5"{% endif %}>{{ server.name }}</th>
+                    {% if server.status != 'DOWN' %}
+                    <td class="cur">{{ server.scur }}</td>
+                    <td class="max">{{ server.smax }}</td>
+                    <td class="lim">{{ backend.slim }}</td>
+                    <td class="action">
+                        <button>
+                            {% if server.status == 'UP' %}
+                            <a href="{{ url_for('disable_server', backend=backend.name,s_name=server.name) }}">OFF</a>
+                            {% elif server.status == 'MAINT' %}
+                            <a href="{{ url_for('enable_server', backend=backend.name,s_name=server.name) }}">ON</a>
+                            {% else %}
+                            <span>NO</span>
+                            {% endif %}
+                        </button>
+                    </td>
+                    {% endif %}
+                </tr>
+            </tbody> 
             {% endfor %}
+            {% else %}
+            <thead class="backend">
+                <tr>
+                    <th scope="col" class="cur">Current</th>
+                    <th scope="col" class="max">Max</th>
+                    <th scope="col" class="lim">Limit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="cur">{{ backend.scur }}</td>
+                    <td class="max">{{ backend.smax }}</td>
+                    <td class="lim">{{ backend.slim }}</td>
+                </tr>
+            </tbody>
+            {% endif %}
+        </table>
         {% endfor %}
-    </table>
-</div>
+    </main
 </body>
 
 </html>
