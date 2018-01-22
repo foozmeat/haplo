@@ -49,6 +49,6 @@ server {
 }
 ```
 
-Design by [@mrgan](https://twitter.com/mrgan)
+Design by [timjcoulter](https://twitter.com/timjcoulter) & [@mrgan](https://twitter.com/mrgan)
 
 ![](static/madewpc.gif)
