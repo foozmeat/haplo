@@ -2,11 +2,11 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Haplo</title>
+    <title>{{ title }}</title>
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style2.css') }}">
 </head>
 <body>
-    <h1>HAPLO</h1>
+    <h1>{{ title }}</h1>
     <main>
         {% for backend in g.backends %}
         <table id="{{ backend.name|lower }}" class="{{ backend.status|lower|replace(' ', '') }} {% if backend.servers %}{% else %}noservers{% endif %}">

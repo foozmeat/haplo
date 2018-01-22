@@ -14,7 +14,7 @@ hap = haproxy.HAProxy(uris=app.config['HAPROXY_URIS'],
 @app.route('/')
 def index():
     refresh_servers()
-    return render_template('index.html.j2')
+    return render_template('index.html.j2', title=app.config['PAGE_TITLE'])
 
 
 @app.route('/disable_server/<backend>/<s_name>')

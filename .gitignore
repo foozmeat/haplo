@@ -1,6 +1,8 @@
 .haplo_venv
+.haplo-venv
 .idea
 __pycache__
 .vagrant
 Vagrantfile
 /config.py
+/.ropeproject
