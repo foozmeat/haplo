@@ -1,3 +1,5 @@
+![](static/screenshot.png)
+
 ## Install
 
 #### Requires python 3 (tested with python 3.6)
