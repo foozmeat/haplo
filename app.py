@@ -48,15 +48,19 @@ def refresh_servers():
                'servers': []}
 
         servers = backend.servers()
-        for server in servers:
-            s = {'name': server.name,
-                 'status': server.status,
-                 'scur': server.metric('scur'),
-                 'smax': server.metric('smax'),
+        for backend_server in servers:
+            s = {'name': backend_server.name,
+                 'status': backend_server.status,
+                 'scur': backend_server.metric('scur'),
+                 'smax': backend_server.metric('smax'),
+                 'bck': backend_server.metric('bck'),
                  }
 
             if 'UP' in s['status']:
                 s['status'] = 'UP'
+
+            if s['bck'] == 1:
+                s['status'] = 'BACKUP'
 
             b_d['servers'].append(s)
 

@@ -212,6 +212,15 @@ tr.up th[scope="row"].server
     background:var(--green);
 }
 
+tr.backup th[scope="row"].server
+{
+    background:var(--green);
+}
+
+tr.backup {
+    opacity: 0.5
+}
+
 tr.maint th[scope="row"].server
 {
     background:var(--yellow);
@@ -316,4 +325,9 @@ tr.maint .action
 tr.nocheck .action
 {
 	background:var(--teal);
+}
+
+tr.backup .action
+{
+	background:var(--red);
 }

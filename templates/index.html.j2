@@ -36,7 +36,7 @@
                             <td class="lim">{{ backend.slim }}</td>
                             <td class="action">
                                 <button>
-                                    {% if server.status == 'UP' %}
+                                    {% if server.status == 'UP' or server.status == 'BACKUP' %}
                                         <a href="{{ url_for('disable_server', backend=backend.name,s_name=server.name) }}">OFF</a>
                                     {% elif server.status == 'MAINT' %}
                                         <a href="{{ url_for('enable_server', backend=backend.name,s_name=server.name) }}">ON</a>
