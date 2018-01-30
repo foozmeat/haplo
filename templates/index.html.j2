@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>{{ title }}</h1>
-<div id="timer"></div>
+<div id="timer"><span id="a"></span><span id="b"></div>
 <main>
     {% for backend in g.backends %}
         <table id="{{ backend.name|lower }}" class="{{ backend.status|lower|replace(' ', '') }}
@@ -37,7 +37,7 @@
                             <td class="max">{{ server.smax }}</td>
                             <td class="lim">{{ backend.slim }}</td>
                             <td class="action">
-                                <button>
+                                <div class="button"
                                     {% if server.status == 'UP' or server.status == 'BACKUP' %}
                                         <a href="{{ url_for('disable_server', backend=backend.name,s_name=server.name) }}">OFF</a>
                                     {% elif server.status == 'MAINT' %}
@@ -45,7 +45,7 @@
                                     {% else %}
                                         <span>NO</span>
                                     {% endif %}
-                                </button>
+                                </div>
                             </td>
                         {% endif %}
                     </tr>

@@ -253,8 +253,7 @@ table caption:before
   cursor: pointer;
 }
 
-#timer:before,
-#timer:after
+#timer span
 {
   display: block;
   content: "";
@@ -267,29 +266,27 @@ table caption:before
   border-radius: 0 300px 300px 0;
 }
 
-#timer:after
+#timer span#b
 {
   background: var(--gray);
 }
 
-.play:before,
-.play:after
+.play span#a,
+.play span#b
 {
   animation-name: pieTimer;
-  animation-duration: 15s;
   animation-delay: 0s;
   animation-iteration-count: 1;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
 
-.play:before
+.play span#a
 {
   background: var(--pink);
-  animation-delay: 15s;
 }
 
-.play:after
+.play span#b
 {
   animation-name: pieTimer, hideSlice;
 }
@@ -337,35 +334,18 @@ tr.nocheck th[scope="row"].server
     background:var(--pink);
 }
 
-button
+div.button
 {
-    font-weight: 600;
-    border-width: 0.05rem;
-    border-color:var(--gray);
-    border-radius: 0.25em;
-    background:var(--white);
-	cursor: pointer;
 }
 
-button a
+div.button a
 {
 	text-decoration: none;
-	color: inherit;
+    color:var(--white);
 }
 
-tr.up button,
-tr.backup button
-{
-    color:var(--red);
-}
-
-tr.maint button
-{
-    color:var(--gray);
-}
-
-tr.nocheck button,
-tr.down button
+tr.nocheck div.button,
+tr.down div.button
 {
     opacity: 0.15;
     cursor: not-allowed;
@@ -376,6 +356,7 @@ td.action
 	height: 2rem;
 	background:var(--black);
 	border-radius: 0 1.2rem 1.2rem 0;
+	cursor: pointer;
 }
 
 

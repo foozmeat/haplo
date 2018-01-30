@@ -1,38 +1,51 @@
 var timer = document.getElementById("timer");
-var runningTimer = false;
+var a = document.getElementById("a");
+var b = document.getElementById("b");
+var runningTimer = "";
+var timerID = 0; 
+var timerDuration = 30; // In seconds
+
+a.style.setProperty("animation-duration", (timerDuration/2 + "s"));
+a.style.setProperty("animation-delay", (timerDuration/2 + "s"));
+b.style.setProperty("animation-duration", (timerDuration/2 + "s"));
 
 var loc = (document.location.href).toLowerCase();
 
 function startTimer() {
-    console.log("got click");
-
-    if (runningTimer !== false) {
-        console.log("starting timer");
+        console.log("Refreshing page in " + timerDuration + " seconds.");
         history.pushState(null, null, '#auto');
         timer.classList.add("play");
-        runningTimer = window.setTimeout(
+        runningTimer = true;
+        timerID = window.setTimeout(
             function() {
+                runningTimer = false;
                 location.reload(true);
-            }, 30000);
-    } else {
-        console.log("stopping timer");
-        history.pushState(null, null, '');
-        clearTimeout(runningTimer);
+            }, (timerDuration * 1000));
+}
+
+function stopTimer() {
+        console.log("Auto-refreshing cancelled.");
+        history.pushState(null, null, ' ');
         timer.classList.remove("play");
+        clearTimeout(timerID);
         runningTimer = false;
+}
+
+function checkTimer() {
+    if (runningTimer === true) {
+        stopTimer();
+    }
+    else {
+        startTimer();
     }
 }
 
-timer.addEventListener("click", startTimer());
-
 if (loc.indexOf('#auto') > -1) {
-	startTimer();
+	checkTimer();
 }
 else
 {
-    clearTimeout(runningTimer);
-    timer.classList.remove("play");
     runningTimer = false;
-    console.log("no auto");
-    timer.addEventListener("click", startTimer());
 }
+
+timer.addEventListener("click", checkTimer);
