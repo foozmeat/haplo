@@ -37,7 +37,7 @@
                             <td class="max">{{ server.smax }}</td>
                             <td class="lim">{{ backend.slim }}</td>
                             <td class="action">
-                                <div class="button"
+                                <div class="button">
                                     {% if server.status == 'UP' or server.status == 'BACKUP' %}
                                         <a href="{{ url_for('disable_server', backend=backend.name,s_name=server.name) }}">OFF</a>
                                     {% elif server.status == 'MAINT' %}
@@ -71,7 +71,7 @@
     {% endfor %}
 </main>
     <script src="{{ url_for('static', filename='autorefresh.js') }}"></script>
-    
+
 </body>
 
 </html>
