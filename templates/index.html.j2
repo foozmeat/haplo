@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <title>{{ title }}</title>
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style2.css') }}">
+
 </head>
 <body>
 <h1>{{ title }}</h1>
+<div id="timer"></div>
 <main>
     {% for backend in g.backends %}
         <table id="{{ backend.name|lower }}" class="{{ backend.status|lower|replace(' ', '') }}
@@ -67,7 +69,9 @@
             {% endif %}
         </table>
     {% endfor %}
-</main
+</main>
+    <script src="{{ url_for('static', filename='autorefresh.js') }}"></script>
+    
 </body>
 
 </html>
