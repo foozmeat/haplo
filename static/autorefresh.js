@@ -2,8 +2,8 @@ var timer = document.getElementById("timer");
 var a = document.getElementById("a");
 var b = document.getElementById("b");
 var runningTimer = "";
-var timerID = 0; 
-var timerDuration = 30; // In seconds
+var timerID = 0;
+var timerDuration = 10; // In seconds
 
 a.style.setProperty("animation-duration", (timerDuration/2 + "s"));
 a.style.setProperty("animation-delay", (timerDuration/2 + "s"));
