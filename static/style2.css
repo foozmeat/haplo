@@ -167,6 +167,11 @@ th.server
     margin: 1rem 0;
 }
 
+tr.down th.server
+{
+    width: 43.9rem;
+}
+
 tbody:before
 {
     display: table-cell;
